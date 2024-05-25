@@ -8,11 +8,11 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 
-# Descargando y Desplegando un Proyecto de React desde GitHub
+# Downloading and Deploying a React Project from GitHub
 
-Este tutorial te guiará a través del proceso de descargar un proyecto de React existente desde GitHub y cómo realizar el deployment del mismo.
+This tutorial will guide you through the process of downloading an existing React project from GitHub and deploying it.
 
-## Descargar el Proyecto desde GitHub
+## Downloading the Project from GitHub
 
 1. **Clone the Repository**: Open your terminal and execute the following command to clone the repository from GitHub:
 
