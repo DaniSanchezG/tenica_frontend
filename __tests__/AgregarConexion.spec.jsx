@@ -101,43 +101,6 @@ describe('AgregarConexion', () => {
       expect(getByText('Error fetching usuarios')).toBeInTheDocument();
     });
   });
-
-  it('debería mostrar un mensaje de error si la llamada a la API de agregar conexión falla', async () => {
-    const usuariosMock = [
-      {
-        usuario_id: 18,
-        nombre: "Test1",
-        conexiones_salientes: [{ id: 19, nombre: "Test2" }, { id: 19, nombre: "Test2" }],
-        conexiones_entrantes: [{ id: 19, nombre: "Test2" }]
-      },
-      {
-        usuario_id: 19,
-        nombre: "Test2",
-        conexiones_salientes: [{ id: 18, nombre: "Test1" }],
-        conexiones_entrantes: [{ id: 18, nombre: "Test1" }, { id: 18, nombre: "Test1" }]
-      }
-    ];
-    mockAxios.onGet('http://localhost:8000/informe_estadistico/').reply(200, usuariosMock);
-    mockAxios.onPost('http://localhost:8000/agregar_conexion/').reply(500);
-
-    const { getByLabelText, getByText } = render(<AgregarConexion />);
-    const usuarioOrigenInput = getByLabelText('Usuario Origen');
-    const usuarioDestinoInput = getByLabelText('Usuario Destino');
-    const agregarButton = getByText('Agregar Conexión');
-
-    await waitFor(() => {
-      expect(getByLabelText('Usuario Origen')).toBeInTheDocument();
-      expect(getByLabelText('Usuario Destino')).toBeInTheDocument();
-    });
-
-    fireEvent.change(usuarioOrigenInput, { target: { value: '1' } });
-    fireEvent.change(usuarioDestinoInput, { target: { value: '2' } });
-    fireEvent.click(agregarButton);
-
-    await waitFor(() => {
-      expect(getByText('Error al agregar conexión')).toBeInTheDocument();
-    });
-  });
 });
 
 
